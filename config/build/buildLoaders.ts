@@ -1,6 +1,7 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { IOptions } from '../../types/types'
 
-export function buildLoaders(options: any) {
+export function buildLoaders(options: IOptions) {
     return   {
         rules: [
           {

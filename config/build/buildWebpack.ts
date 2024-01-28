@@ -1,8 +1,10 @@
 import path from 'path';
 import { buildPlugins } from './buildPlugins';
 import { buildLoaders } from './buildLoaders';
+import { devServer } from './buildDevServer';
+import {  IOptionsWithEnv } from '../../types/types';
 
-export function buildWebpack(options: any) {
+export function buildWebpack(options: IOptionsWithEnv) {
     return {
         mode: options.env.mode ?? 'development',
         entry: path.resolve(__dirname, 
@@ -18,9 +20,6 @@ export function buildWebpack(options: any) {
           extensions: ['.tsx', '.ts', '.js'],
         },
         devtool:  options.isDev ?  'inline-source-map': false,
-        devServer:  options.isDev ?  {
-          port: options.env.port ?? 3000,
-          open: true
-        } : undefined
+        devServer:  devServer(options)
       };
 }

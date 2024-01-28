@@ -1,11 +1,5 @@
 import { buildWebpack } from './config/build/buildWebpack';
-
-type Mode = 'production' | 'development'
-
-interface EnvVariables {
-  mode: Mode
-  port: number
-}
+import { EnvVariables } from './types/types';
 
 export default (env: EnvVariables) => {
   const isDev = env.mode === 'development'
