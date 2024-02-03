@@ -15,7 +15,7 @@ const App = () => {
                 <div>{count}</div>
                 <button className='button' onClick={
                     increment
-                }>  <span className='button__span'>+</span></button>
+                }>  <span className='button__span'>s</span></button>
             </div>
         </div>
     );

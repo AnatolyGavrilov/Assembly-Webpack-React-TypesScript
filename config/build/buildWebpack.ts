@@ -2,23 +2,23 @@ import path from 'path';
 import { buildPlugins } from './buildPlugins';
 import { buildLoaders } from './buildLoaders';
 import { devServer } from './buildDevServer';
-import {  IOptionsWithEnv } from '../../types/types';
+import { buildResolvers } from './buildResolvers';
+import { IBuildOptions } from './types/types';
 
-export function buildWebpack(options: IOptionsWithEnv) {
+export function buildWebpack(options: IBuildOptions) {
+    const {paths} = options
+
     return {
-        mode: options.env.mode ?? 'development',
-        entry: path.resolve(__dirname, 
-          '../../src', 'index.tsx'),
+        mode: options.buildMode ?? 'development',
+        entry: paths.entry,
         output: {
-          path: path.resolve(__dirname, '../../build'),
+          path: paths.output,
           filename: '[name].[contenthash].js',
           clean: true,
         },
         plugins: buildPlugins(options),
         module: buildLoaders(options),
-        resolve: {
-          extensions: ['.tsx', '.ts', '.js'],
-        },
+        resolve: buildResolvers(),
         devtool:  options.isDev ?  'inline-source-map': false,
         devServer:  devServer(options)
       };
