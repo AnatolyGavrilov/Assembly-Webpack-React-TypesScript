@@ -3,7 +3,7 @@ import { Form } from "./components/Form/Form";
 import { List } from "./components/List/List";
 
 export const App = () => {
-  const [count, setCount] = useState<number>(1);
+  const [count, setCount] = useState(1);
 
   const increment = () => {
     setCount((prev) => prev + 1);
