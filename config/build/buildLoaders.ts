@@ -15,7 +15,7 @@ export function buildLoaders(options: IBuildOptions): {
     loader: "css-loader",
     options: {
       modules: {
-        localIdentName: "[path][name]__[local]",
+        localIdentName: "[local]__[hash:base64:5]",
       },
     },
   };
